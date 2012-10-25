@@ -25,22 +25,26 @@ public class Grid {
 
 			}
 		}
-	
-		int[] points = new int[(size-2)*(size-2)];
-		for(int i=0;i<12; i++){
+		int innerfence = size-2;
+		int[] points = new int[innerfence*innerfence+1];
+		for(int i=0;i<13; i++){
 			
-			int r = boardscramble.nextInt(size-2)+1;
-			int s = boardscramble.nextInt(size-2)+1;
+			int r = boardscramble.nextInt(innerfence)+1;
+			int s = boardscramble.nextInt(innerfence)+1;
 
-			while(points[(r-1)*10+s-1]==0){
-				r = boardscramble.nextInt(size-2)+1;
-				s = boardscramble.nextInt(size-2)+1;
+			do{
+				r = boardscramble.nextInt(innerfence)+1;
+
+				s = boardscramble.nextInt(innerfence)+1;
 				if(points[(r-1)*10+s-1]==0){
 					
 					points[(r-1)*10+s-1]=1;
 				}
-			}	
+			}while(points[(r-1)*10+s-1]==0)
 
+			if(i==0){
+				these[r][s]= (Item) new You(this,r,s); 
+			}
 			these[r][s]= (Item) new Mho(this,r,s); 
 			System.out.print(r);
 			System.out.println("," + s);
