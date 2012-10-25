@@ -1,44 +1,38 @@
-
 import java.awt.*;
 import java.util.Random;
 public class Grid {
 
-
 	private Item[][] these;
 
-	private Random boardscramble= new Random();
+	private Random boardScrambler = new Random();
 	private int size;
 	public Grid(int t){
-		size=t;
+		size = t;
 
-		these= new Item[t][t];
+		these = new Item[t][t];
 		
-		for(int i=0;i<size;i++){
-			for(int j=0;j<size;j++){
-				if(i==0||j==0||j+1==size||i+1==size){
+		for(int x = 0; x < size; x++){
+			for(int y = 0; y < size; y++){
+				if(x == 0 || y == 0 || x+1 == size || y + 1 == size){
 
-					these[i][j]=(Item) new Fence(this,i,j);
-				}else{
-					
-					these[i][j]=new Item(this,i,j);
+					these[x][y] = (Item) new Fence(this,x,y);
 				}
-
 			}
 		}
 	
-		int[] points = new int[(size-2)*(size-2)];
-		for(int i=0;i<12; i++){
+		for(int i=0; i<12; i++){
 			
-			int r = boardscramble.nextInt(size-2)+1;
-			int s = boardscramble.nextInt(size-2)+1;
+			int x = boardScrambler.nextInt(size-2)+1;
+			int y = boardScrambler.nextInt(size-2)+1;
 
-			while(points[(r-1)*10+s-1]==0){
-				r = boardscramble.nextInt(size-2)+1;
-				s = boardscramble.nextInt(size-2)+1;
+			while(){
+				
 				if(points[(r-1)*10+s-1]==0){
-					
-					points[(r-1)*10+s-1]=1;
+					points[(r-1)*10+s-1] = 1;
 				}
+
+				r = boardScrambler.nextInt(size-2)+1;
+				s = boardScrambler.nextInt(size-2)+1;
 			}	
 
 			these[r][s]= (Item) new Mho(this,r,s); 
