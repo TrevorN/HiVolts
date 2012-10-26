@@ -1,44 +1,22 @@
 import java.awt.*;
 public class Item{
 
-	protected Grid mygrid;
-	protected int x,y;
-	public Item(Grid g, int x1, int y1){
+	protected Grid myGrid;
+
+	protected int x, y;
+
+	public Item(Grid g, int x, int y){
 	
-		mygrid=g;
-		x=x1;
-		y=y1;
+		myGrid = g;
+		this.x = x;
+		this.y = y;
 
 	}
 
 	public void move(){}
-	public int getY(){
 
+	public String whoAmI(){}
 
-		return y;
-
-	}
-	public int getX(){
-
-		return x;
-
-	}
-	public void setY(int r){
-
-		y=r;
-
-	}
-	public void setX(int r){
-
-		x=r;
-
-	}
-
-
-
-	public void drawyoself(Graphics g){
-		g.setColor(Color.ORANGE);
-		g.fillRect(x*64,y*64,64,64);
-	}
+	public void drawyoself(Graphics g){}
 
 }	
