@@ -1,5 +1,5 @@
 import java.awt.*;
-public class Item{
+public abstract class Item{
 
 	protected Grid mygrid;
 	protected int x,y;
@@ -11,7 +11,6 @@ public class Item{
 
 	}
 
-	public void move(){}
 	public int getY(){
 
 
@@ -36,9 +35,8 @@ public class Item{
 
 
 
-	public void drawyoself(Graphics g){
-		g.setColor(Color.ORANGE);
-		g.fillRect(x*64,y*64,64,64);
-	}
+	public abstract void act();
+
+	public abstract void drawyoself(Graphics g);
 
 }	
