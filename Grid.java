@@ -4,6 +4,8 @@ public class Grid {
 
 	private Item[][] grid;
 
+	private Mho[] mhos = new Mho[12];
+
 	private Random boardScrambler = new Random();
 
 	private int size;
@@ -35,23 +37,24 @@ public class Grid {
 				y = boardScrambler.nextInt(size - 2) + 1;
 			}	
 
-			grid[x][y] = (Item) new Mho(this,x,y); 
+			mhos[i] = new Mho(this,x,y);
+			grid[x][y] = mhos[i]; 
 			System.out.println(x + ", " + y);
 		
 		}	
 	}
 	
+	public void invokeMhos()
+	{
+		for(Mho m : mhos)
+		{
+			m.act();
+		}
+	}
+
 	public void addItem(Item toAdd, int x, int y){
 		
 		grid[x][y] = toAdd;
-		drawAll();
-
-	}
-
-	public void actItem(int x, int y){
-	
-		grid[x][y].act();
-		drawAll();
 
 	}
 
@@ -62,7 +65,7 @@ public class Grid {
 
 	}
 	
-	private void drawAll(Graphics g){
+	public void drawAll(Graphics g){
 	
 		for(int i = 0; i < size; i++){
 
