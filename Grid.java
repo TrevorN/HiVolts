@@ -2,73 +2,82 @@ import java.awt.*;
 import java.util.Random;
 public class Grid {
 
-	private Item[][] these;
+	private Item[][] grid;
 
 	private Random boardScrambler = new Random();
+
 	private int size;
-	public Grid(int t){
+
+	private Graphics g;
+
+	public Grid(int t, Graphics g){
+		
+		this.g = g;
+	
 		size = t;
 
-		these = new Item[t][t];
+		grid = new Item[size][size];
 		
 		for(int x = 0; x < size; x++){
 			for(int y = 0; y < size; y++){
 				if(x == 0 || y == 0 || x+1 == size || y + 1 == size){
 
-					these[x][y] = (Item) new Fence(this,x,y);
+					grid[x][y] = (Item) new Fence(this,x,y);
 				}
 			}
 		}
 	
-		for(int i=0; i<12; i++){
+		for(int i = 0; i < 12; i ++){
 			
-			int x = boardScrambler.nextInt(size-2)+1;
-			int y = boardScrambler.nextInt(size-2)+1;
+			int x = boardScrambler.nextInt(size - 2) + 1;
+			int y = boardScrambler.nextInt(size - 2) + 1;
 
-			while(){
-				
-				if(points[(r-1)*10+s-1]==0){
-					points[(r-1)*10+s-1] = 1;
-				}
+			while(grid[x][y] != null){
 
-				r = boardScrambler.nextInt(size-2)+1;
-				s = boardScrambler.nextInt(size-2)+1;
+				x = boardScrambler.nextInt(size - 2) + 1;
+				y = boardScrambler.nextInt(size - 2) + 1;
 			}	
 
-			these[r][s]= (Item) new Mho(this,r,s); 
-			System.out.print(r);
-			System.out.println("," + s);
-		}
+			grid[x][y] = (Item) new Mho(this,x,y); 
+			System.out.println(x + ", " + y);
 		
+		}	
 	}
 	
-	public void setItem(int x, int y, int x2, int y2){
+	public void addItem(Item toAdd, int x, int y){
+		
+		grid[x][y] = toAdd;
+		drawAll();
 
-//		these[x][y].setX(x2);
-//		these[x][y].setY(y2);
-
-		these[x2][y2]=these[x][y];
-		these[x][y]=new Item(this, x, y);
 	}
 
+	public void actItem(int x, int y){
+	
+		grid[x][y].act();
+		drawAll();
 
-	public int getItemX(int x, int y){
-		return these[x][y].getX();
 	}
-	public int getItemY(int x, int y){
-		return these[x][y].getY();
-	}
 
+	public Item whatsAt(int x, int y)
+	{
 
-	public void moveItem(int x, int y){
-		these[x][y].move();
+		return grid[x][y];
+
 	}
 	
-	public void drawAll(Graphics g){
-		for(int i=0;i<size;i++){
-			for(int j=0;j<size;j++){
-				these[i][j].drawyoself(g);
+	private void drawAll(){
+	
+		for(int i = 0; i < size; i++){
+
+			for(int j = 0; j < size; j++){
+
+				if(grid[i][j] != null){
+					grid[i][j].drawyoself(g);
+				}
+
 			}
+
 		}
+
 	}
 }
