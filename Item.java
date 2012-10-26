@@ -1,5 +1,5 @@
 import java.awt.*;
-public class Item{
+public abstract class Item{
 
 	protected Grid myGrid;
 
