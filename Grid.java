@@ -8,12 +8,8 @@ public class Grid {
 
 	private int size;
 
-	private Graphics g;
-
-	public Grid(int t, Graphics g){
+	public Grid(int t){
 		
-		this.g = g;
-	
 		size = t;
 
 		grid = new Item[size][size];
@@ -23,6 +19,7 @@ public class Grid {
 				if(x == 0 || y == 0 || x+1 == size || y + 1 == size){
 
 					grid[x][y] = (Item) new Fence(this,x,y);
+			
 				}
 			}
 		}
@@ -65,7 +62,7 @@ public class Grid {
 
 	}
 	
-	private void drawAll(){
+	private void drawAll(Graphics g){
 	
 		for(int i = 0; i < size; i++){
 
