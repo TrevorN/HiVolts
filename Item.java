@@ -1,4 +1,5 @@
 import java.awt.*;
+
 public abstract class Item{
 
 	protected Grid myGrid;
@@ -13,10 +14,10 @@ public abstract class Item{
 
 	}
 
-	public void move(){}
+	public abstract void act();
 
-	public String whoAmI(){}
+	public abstract String whoAmI();
 
-	public void drawyoself(Graphics g){}
+	public abstract void drawyoself(Graphics g);
 
 }	
