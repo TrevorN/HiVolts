@@ -1,5 +1,3 @@
-import java.awt.*;
-
 public abstract class Item{
 
 	protected Grid myGrid;
@@ -18,6 +16,6 @@ public abstract class Item{
 
 	public abstract String whoAmI();
 
-	public abstract void drawyoself(Graphics g);
+	public abstract void drawyoself();
 
 }	

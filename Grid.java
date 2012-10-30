@@ -1,4 +1,3 @@
-import java.awt.*;
 import java.util.Random;
 public class Grid {
 
@@ -9,6 +8,8 @@ public class Grid {
 	private Random boardScrambler = new Random();
 
 	private int size;
+
+	char escCode = 0x1B;
 
 	public Grid(int t){
 		
@@ -39,9 +40,13 @@ public class Grid {
 
 			mhos[i] = new Mho(this,x,y);
 			grid[x][y] = mhos[i]; 
-			System.out.println(x + ", " + y);
 		
 		}	
+		int back=100;
+		int up=12;
+		System.out.print(String.format("%c[%dD", escCode, back));
+		System.out.print(String.format("%c[%dA", escCode, up));
+		System.out.print(String.format("%c7", escCode));
 	}
 	
 	public void invokeMhos(){
@@ -64,21 +69,30 @@ public class Grid {
 
 	}
 	
-	public void drawAll(Graphics g){
+	public void drawAll(){
 	
-//		g.setColor(Color.BLACK);
-//		g.fillRect(0,0,size*64,size*64);
+
+//		Runtime.getRuntime().exec("cls");
+
+		System.out.print(String.format("%c8", escCode));
+//		int row = 0;
+//		int column =0;
+//		System.out.print(String.format("%c[%d;%df", escCode, row, column));
+		System.out.println();
 		for(int i = 0; i < size; i++){
 
 			for(int j = 0; j < size; j++){
 
 				if(grid[i][j] != null){
-					grid[i][j].drawyoself(g);
+					grid[i][j].drawyoself();
+				}else{
+					System.out.print(" ");
 				}
 
 			}
 
 		}
+
 
 	}
 }

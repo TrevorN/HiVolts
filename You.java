@@ -4,10 +4,10 @@ public class You extends Item{
 	public You(Grid g, int i, int j){
 		super(g,i,j);
 	}
-	public void drawyoself(Graphics g){
+	public void drawyoself(){
 
-		g.setColor(Color.YELLOW);
-		g.fillRect(x*64,y*64,64,64);
+		System.out.print("Y");
+
 	}
 
 	public void setDirection(int r){

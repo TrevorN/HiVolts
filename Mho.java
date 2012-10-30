@@ -1,4 +1,3 @@
-import java.awt.*;
 public class Mho extends Item{
 
 	public Mho(Grid g, int i, int j){
@@ -11,10 +10,10 @@ public class Mho extends Item{
 
 	}
 
-	public void drawyoself(Graphics g){
+	public void drawyoself(){
 
-		g.setColor(Color.RED);
-		g.fillRect(x*64,y*64,64,64);
+		System.out.print("M");
+
 	}
 
 	public String whoAmI(){
