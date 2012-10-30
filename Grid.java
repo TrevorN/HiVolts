@@ -78,7 +78,6 @@ public class Grid {
 //		int row = 0;
 //		int column =0;
 //		System.out.print(String.format("%c[%d;%df", escCode, row, column));
-		System.out.println();
 		for(int i = 0; i < size; i++){
 
 			for(int j = 0; j < size; j++){
@@ -90,6 +89,7 @@ public class Grid {
 				}
 
 			}
+			System.out.println();
 
 		}
 
