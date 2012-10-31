@@ -1,8 +1,12 @@
 public abstract class Item{
 
+	char escCode = 0x1B;
+
 	protected Grid myGrid;
 
 	protected int x, y;
+	
+	protected char name = ' ';
 
 	public Item(Grid g, int x, int y){
 	
@@ -16,6 +20,27 @@ public abstract class Item{
 
 	public abstract String whoAmI();
 
-	public abstract void drawyoself();
+	public void drawyoself(){
+		
+		
+		for(int i = 0; i < 6; i++){
+
+			for(int j = 0; j < 6; j++){
+
+				System.out.print(name);
+
+			}
+			
+			System.out.print(String.format("%c[%dD", escCode, 6));
+
+			System.out.print(String.format("%c[%dB", escCode, 1));
+			//line return
+
+		}
+
+		System.out.print(String.format("%c[%dA", escCode, 6));
+		System.out.print(String.format("%c[%dC", escCode, 6));
+
+	}
 
 }	

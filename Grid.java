@@ -5,14 +5,18 @@ public class Grid {
 
 	private Mho[] mhos = new Mho[12];
 
-	private Random boardScrambler = new Random();
+	private Random randgen = new Random();
 
 	private int size;
 
 	char escCode = 0x1B;
 
+	private Item defaultitem;
+
 	public Grid(int t){
-		
+
+	 	defaultitem = (Item) new ItemDefault(this,-1,-1);	
+
 		size = t;
 
 		grid = new Item[size][size];
@@ -29,21 +33,21 @@ public class Grid {
 	
 		for(int i = 0; i < 12; i ++){
 			
-			int x = boardScrambler.nextInt(size - 2) + 1;
-			int y = boardScrambler.nextInt(size - 2) + 1;
+			int x = randgen.nextInt(size - 2) + 1;
+			int y = randgen.nextInt(size - 2) + 1;
 
 			while(grid[x][y] != null){
 
-				x = boardScrambler.nextInt(size - 2) + 1;
-				y = boardScrambler.nextInt(size - 2) + 1;
+				x = randgen.nextInt(size - 2) + 1;
+				y = randgen.nextInt(size - 2) + 1;
 			}	
 
 			mhos[i] = new Mho(this,x,y);
 			grid[x][y] = mhos[i]; 
 		
 		}	
-		int back=100;
-		int up=12;
+		int back=12*6;
+		int up=12*6;
 		System.out.print(String.format("%c[%dD", escCode, back));
 		System.out.print(String.format("%c[%dA", escCode, up));
 		System.out.print(String.format("%c7", escCode));
@@ -82,14 +86,18 @@ public class Grid {
 
 			for(int j = 0; j < size; j++){
 
+				System.out.print(String.format("%c[%dm",escCode,randgen.nextInt(6)+40));
+
 				if(grid[i][j] != null){
 					grid[i][j].drawyoself();
 				}else{
-					System.out.print(" ");
+					defaultitem.drawyoself();
 				}
 
 			}
-			System.out.println();
+			System.out.print(String.format("%c[%dB", escCode, 6));
+			System.out.print(String.format("%c[%dD", escCode, 12*6));
+//			System.out.println();
 
 		}
 
