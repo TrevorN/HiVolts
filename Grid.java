@@ -46,7 +46,7 @@ public class Grid {
 			grid[x][y] = mhos[i]; 
 		
 		}	
-		int back=12*6;
+		int back=12*12;
 		int up=12*6;
 		System.out.print(String.format("%c[%dD", escCode, back));
 		System.out.print(String.format("%c[%dA", escCode, up));
@@ -95,8 +95,8 @@ public class Grid {
 				}
 
 			}
-			System.out.print(String.format("%c[%dB", escCode, 6));
-			System.out.print(String.format("%c[%dD", escCode, 12*6));
+			System.out.print(String.format("%c[%dB", escCode, 6)); //move down
+			System.out.print(String.format("%c[%dD", escCode, 12*12));// move left
 //			System.out.println();
 
 		}

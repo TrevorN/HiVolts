@@ -25,13 +25,13 @@ public abstract class Item{
 		
 		for(int i = 0; i < 6; i++){
 
-			for(int j = 0; j < 6; j++){
+			for(int j = 0; j < 12; j++){
 
 				System.out.print(name);
 
 			}
 			
-			System.out.print(String.format("%c[%dD", escCode, 6));
+			System.out.print(String.format("%c[%dD", escCode, 12));
 
 			System.out.print(String.format("%c[%dB", escCode, 1));
 			//line return
@@ -39,7 +39,7 @@ public abstract class Item{
 		}
 
 		System.out.print(String.format("%c[%dA", escCode, 6));
-		System.out.print(String.format("%c[%dC", escCode, 6));
+		System.out.print(String.format("%c[%dC", escCode, 12));
 
 	}
 
