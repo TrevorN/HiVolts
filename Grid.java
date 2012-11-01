@@ -25,7 +25,7 @@ public class Grid {
 			for(int y = 0; y < size; y++){
 				if(x == 0 || y == 0 || x+1 == size || y + 1 == size){
 
-					grid[x][y] = (Item) new Fence(this,x,y);
+					grid[x][y] = new Fence(this,x,y);
 			
 				}
 			}
@@ -45,7 +45,21 @@ public class Grid {
 			mhos[i] = new Mho(this,x,y);
 			grid[x][y] = mhos[i]; 
 		
-		}	
+		}
+
+		for(int i = 0; i < 20; i++){
+
+			int x = randgen.nextInt(size - 2) + 1;
+			int y = randgen.nextInt(size - 2) + 1;
+
+			while(grid[x][y] != null){
+				x = randgen.nextInt(size - 2) + 1;
+				y = randgen.nextInt(size - 2) + 1;
+			}
+
+			grid[x][y] = new Fence(this,x,y);
+		}
+	
 		int back=12*6;
 		int up=12*6;
 		System.out.print(String.format("%c[%dD", escCode, back));
