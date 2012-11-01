@@ -29,7 +29,14 @@ public abstract class Item{
 
 			for(int j = 0; j < 12; j++){
 
-				System.out.print(String.format("%c[%dm",escCode,40+color));
+				System.out.print(String.format("%c[30;%dm",escCode,40+color));
+				if(i==6){
+
+					System.out.print(String.format("%c[30;%dm",escCode,40+color));
+
+				}
+					
+
 				System.out.print(name);
 
 			}
