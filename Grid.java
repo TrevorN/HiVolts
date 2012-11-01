@@ -100,7 +100,7 @@ public class Grid {
 
 			for(int j = 0; j < size; j++){
 
-				System.out.print(String.format("%c[%dm",escCode,randgen.nextInt(6)+40));
+				System.out.print(String.format("%c[%dm",escCode,47));//randgen.nextInt(6)+40));
 
 				if(grid[i][j] != null){
 					grid[i][j].drawyoself();
@@ -109,8 +109,8 @@ public class Grid {
 				}
 
 			}
-			System.out.print(String.format("%c[%dB", escCode, 6));
-			System.out.print(String.format("%c[%dD", escCode, 12*6));
+			System.out.print(String.format("%c[%dB", escCode, 6)); //move down
+			System.out.print(String.format("%c[%dD", escCode, 12*12));// move left
 //			System.out.println();
 
 		}
