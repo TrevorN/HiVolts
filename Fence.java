@@ -4,7 +4,8 @@ public class Fence extends Item{
 
 		super(g,i,j);
 		name = 'F';
-
+		color = 1;
+		
 	}
 
 	public void act(){

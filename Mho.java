@@ -4,6 +4,7 @@ public class Mho extends Item{
 
 		super(g,i,j);
 		name = 'M';
+		color = 4;
 	
 	}
 

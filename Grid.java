@@ -93,6 +93,7 @@ public class Grid {
 //		Runtime.getRuntime().exec("cls");
 
 		System.out.print(String.format("%c8", escCode));
+		System.out.print(String.format("%c[%dm",escCode,47));
 //		int row = 0;
 //		int column =0;
 //		System.out.print(String.format("%c[%d;%df", escCode, row, column));
@@ -100,7 +101,7 @@ public class Grid {
 
 			for(int j = 0; j < size; j++){
 
-				System.out.print(String.format("%c[%dm",escCode,47));//randgen.nextInt(6)+40));
+//				System.out.print(String.format("%c[%d,%dm",escCode,8,47));//randgen.nextInt(6)+40));
 
 				if(grid[i][j] != null){
 					grid[i][j].drawyoself();

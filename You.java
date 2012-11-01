@@ -5,6 +5,7 @@ public class You extends Item{
 	public You(Grid g, int i, int j){
 		super(g,i,j);
 		name = 'Y';
+		color= = 6;
 	}
 
 	public void setDirection(int r){

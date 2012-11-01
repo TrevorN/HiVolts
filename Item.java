@@ -8,6 +8,8 @@ public abstract class Item{
 	
 	protected char name = ' ';
 
+	protected int color = 0; //1-8
+
 	public Item(Grid g, int x, int y){
 	
 		myGrid = g;
@@ -27,6 +29,7 @@ public abstract class Item{
 
 			for(int j = 0; j < 12; j++){
 
+				System.out.print(String.format("%c[%dm",escCode,40+color));
 				System.out.print(name);
 
 			}
