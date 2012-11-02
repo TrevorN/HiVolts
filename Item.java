@@ -1,4 +1,4 @@
-public abstract class Item{
+public class Item{
 
 	char escCode = 0x1B;
 
