@@ -14,16 +14,20 @@ public class Hivolts_Display {
 
 		hivoltsgrid.drawAll();
 
-		byte[] input = new byte[1];
+		
+		byte[] input = new byte[2];
 		while(true){
 			try{
 				System.in.available();
 				
 				System.in.read(input);
 
-				if(input[0]){
+				if(input[0]!=0){
 
 					hivoltsgrid.drawAll();
+
+//					System.in.skip(System.in.available());
+					System.out.println(input[0]);
 
 				}
 			}catch(IOException e){
