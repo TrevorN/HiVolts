@@ -1,4 +1,4 @@
-public abstract class Item{
+public class Item{
 
 	char escCode = 0x1B;
 
@@ -17,8 +17,6 @@ public abstract class Item{
 		this.y = y;
 
 	}
-
-	public abstract String whoAmI();
 
 	public void drawyoself(){
 		

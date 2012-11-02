@@ -15,7 +15,7 @@ public class Grid {
 
 	public Grid(int t){
 
-	 	defaultitem = (Item) new ItemDefault(this,-1,-1);	
+	 	defaultitem = (Item) new Item(this,-1,-1);	
 
 		size = t;
 
