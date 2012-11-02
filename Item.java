@@ -4,7 +4,7 @@ public class Item{
 
 	protected Grid myGrid;
 
-	protected int x, y;
+	protected int myX, myY;
 	
 	protected char name = ' ';
 
@@ -18,8 +18,8 @@ public class Item{
 
 	}
 
-	public String whoAmI(){
-		return Character.toString(name);
+	public char whoAmI(){
+		return name;
 	}
 
 	public void newLoc(int x, int y){
