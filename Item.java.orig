@@ -4,7 +4,7 @@ public class Item{
 
 	protected Grid myGrid;
 
-	protected int myX, myY;
+	protected int x, y;
 	
 	protected char name = ' ';
 
@@ -13,20 +13,23 @@ public class Item{
 	public Item(Grid g, int x, int y){
 	
 		myGrid = g;
-		this.myX = x;
-		this.myY = y;
+		this.x = x;
+		this.y = y;
 
 	}
 
-	public char whoAmI(){
-		return name;
-	}
+<<<<<<< HEAD
+	public String whoAmI(){
+		return Character.toString(name);
+=======
+	public abstract String whoAmI();
 
 	public void newLoc(int x, int y){
 
-		myX = x;
-		myY = y;
+		this.x = x;
+		this.y = y;
 
+>>>>>>> a17d0af6a5aafd7ad31da315962967ca369b3037
 	}
 
 	public void drawyoself(){
