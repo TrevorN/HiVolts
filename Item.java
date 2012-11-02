@@ -13,8 +13,8 @@ public class Item{
 	public Item(Grid g, int x, int y){
 	
 		myGrid = g;
-		this.x = x;
-		this.y = y;
+		this.myX = x;
+		this.myY = y;
 
 	}
 
@@ -24,8 +24,8 @@ public class Item{
 
 	public void newLoc(int x, int y){
 
-		this.x = x;
-		this.y = y;
+		myX = x;
+		myY = y;
 
 	}
 
