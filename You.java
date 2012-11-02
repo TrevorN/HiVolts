@@ -16,9 +16,4 @@ public class You extends Item{
 
 	}
 
-	public String whoAmI(){
-
-		return "You";
-
-	}
 }

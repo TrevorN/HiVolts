@@ -18,6 +18,10 @@ public class Item{
 
 	}
 
+	public String whoAmI(){
+		return Character.toString(name);
+	}
+
 	public void drawyoself(){
 		
 		

@@ -12,11 +12,4 @@ public class Mho extends Item{
 
 	}
 
-
-	public String whoAmI(){
-
-		return "Mho";
-
-	}
-
 }

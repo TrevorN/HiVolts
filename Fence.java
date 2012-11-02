@@ -8,10 +8,4 @@ public class Fence extends Item{
 		
 	}
 
-	public String whoAmI(){
-
-		return "Fence";
-
-	}
-
 }
