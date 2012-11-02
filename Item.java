@@ -18,7 +18,11 @@ public class Item{
 
 	}
 
-	public abstract String whoAmI();
+	public String whoAmI(){
+
+		return name;
+
+	}
 
 	public void newLoc(int x, int y){
 

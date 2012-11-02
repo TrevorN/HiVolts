@@ -82,6 +82,7 @@ public class Grid {
 	public void invokeMhos(){
 		for(Mho m : mhos)
 		{
+			if(m.alive())
 			m.act();
 		}
 	}
@@ -92,7 +93,7 @@ public class Grid {
 
 	}
 
-	public translateItem(int x, int y, int newX, newY)
+	public void translateItem(int x, int y, int newX, newY)
 	{
 
 		grid[newX][newY] = grid[x][y];
@@ -100,6 +101,11 @@ public class Grid {
 		grid[newX][newY].newLoc(x, y);
 
 	}
+
+	public void removeItem(int x, int y)
+	{
+		grid[x][y] = null;	
+	}	
 	
 	public void drawAll(){
 	
