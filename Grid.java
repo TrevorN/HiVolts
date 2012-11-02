@@ -86,16 +86,18 @@ public class Grid {
 		}
 	}
 
-	public void addItem(Item toAdd, int x, int y){
-		
-		grid[x][y] = toAdd;
+	public Item whatsAt(int x, int y){
+
+		return grid[x][y];
 
 	}
 
-	public Item whatsAt(int x, int y)
+	public translateItem(int x, int y, int newX, newY)
 	{
 
-		return grid[x][y];
+		grid[newX][newY] = grid[x][y];
+		grid[x][y] = null;
+		grid[newX][newY].newLoc(x, y);
 
 	}
 	

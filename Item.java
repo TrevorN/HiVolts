@@ -20,6 +20,13 @@ public abstract class Item{
 
 	public abstract String whoAmI();
 
+	public void newLoc(int x, int y){
+
+		this.x = x;
+		this.y = y;
+
+	}
+
 	public void drawyoself(){
 		
 		
