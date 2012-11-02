@@ -18,15 +18,18 @@ public class Item{
 
 	}
 
+<<<<<<< HEAD
 	public String whoAmI(){
 		return Character.toString(name);
-	}
+=======
+	public abstract String whoAmI();
 
 	public void newLoc(int x, int y){
 
 		this.x = x;
 		this.y = y;
 
+>>>>>>> a17d0af6a5aafd7ad31da315962967ca369b3037
 	}
 
 	public void drawyoself(){
