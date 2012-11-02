@@ -1,15 +1,11 @@
 public class Fence extends Item{
 
-	public Fence(Grid g, int i, int j){
+	public Fence(Grid g, int x, int y){
 
-		super(g,i,j);
+		super(g,x,y);
 		name = 'F';
 		color = 1;
 		
-	}
-
-	public void act(){
-
 	}
 
 	public String whoAmI(){

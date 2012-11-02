@@ -18,8 +18,6 @@ public abstract class Item{
 
 	}
 
-	public abstract void act();
-
 	public abstract String whoAmI();
 
 	public void drawyoself(){
