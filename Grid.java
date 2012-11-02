@@ -59,7 +59,19 @@ public class Grid {
 
 			grid[x][y] = new Fence(this,x,y);
 		}
-	
+
+
+		int x = randgen.nextInt(size - 2) + 1;
+		int y = randgen.nextInt(size - 2) + 1;
+
+		while(grid[x][y] != null){
+			x = randgen.nextInt(size - 2) + 1;
+			y = randgen.nextInt(size - 2) + 1;
+		}
+
+		grid[x][y] = new You(this,x,y);
+
+
 		int back=12*6;
 		int up=12*6;
 		System.out.print(String.format("%c[%dD", escCode, back));
