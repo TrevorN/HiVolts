@@ -24,7 +24,7 @@ public class Mho extends Item{
 			{
 				if(myGrid.whatsAt(x, y).whoAmI() == 'Y')
 				{
-					keepLooking = false
+					keepLooking = false;
 					playerX = x;
 					playerY = y;
 				}
@@ -65,10 +65,5 @@ public class Mho extends Item{
 		} 
 	}
 
-	public char whoAmI(){
-
-		return 'M';
-
-	}
 
 }
