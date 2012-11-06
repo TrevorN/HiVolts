@@ -65,9 +65,9 @@ public class Mho extends Item{
 		} 
 	}
 
-	public String whoAmI(){
+	public char whoAmI(){
 
-		return "Mho";
+		return 'M';
 
 	}
 
