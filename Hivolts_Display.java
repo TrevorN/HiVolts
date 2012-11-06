@@ -26,7 +26,6 @@ public class Hivolts_Display {
 
 				if(input[0]!=0){
 
-
 					for(int i = 1; i < 11; i++){
 
 						for(int j =1; j<11; j++){
@@ -42,42 +41,45 @@ public class Hivolts_Display {
 
 					switch(input[0]){
 						case 'q':
-							System.out.println("NW");
+//							System.out.println("NW");
 							hivoltsgrid.translateItem(x,y,x-1,y-1);
 							break;
 						case 'w':
-							System.out.println("N");
+//							System.out.println("N");
 							hivoltsgrid.translateItem(x,y,x,y-1);
 							break;
 						case 'e':
-							System.out.println("NE");
+//							System.out.println("NE");
 							hivoltsgrid.translateItem(x,y,x+1,y-1);
 							break;
 						case 'a':
-							System.out.println("W");
+//							System.out.println("W");
 							hivoltsgrid.translateItem(x,y,x-1,y);
 							break;
 						case 's':
-							System.out.println("nop");
+//							System.out.println("nop");
 							break;
 						case 'd':
-							System.out.println("E");
+//							System.out.println("E");
 							hivoltsgrid.translateItem(x,y,x+1,y);
 							break;
 						case 'z':
-							System.out.println("SW");
+//							System.out.println("SW");
 							hivoltsgrid.translateItem(x,y,x-1,y+1);
 							break;
 						case 'x':
-							System.out.println("S");
+//							System.out.println("S");
 							hivoltsgrid.translateItem(x,y,x,y+1);
 							break;
 						case 'c':
-							System.out.println("SE");
+//							System.out.println("SE");
 							hivoltsgrid.translateItem(x,y,x+1,y+1);
 							break;
 					}
 //					System.in.skip(System.in.available());
+					
+					hivoltsgrid.invokeMhos();
+
 					hivoltsgrid.drawAll();
 
 				}
