@@ -92,7 +92,7 @@ public class Grid {
 
 	}
 
-	public translateItem(int x, int y, int newX, newY)
+	public void translateItem(int x, int y, int newX, int newY)
 	{
 
 		grid[newX][newY] = grid[x][y];
@@ -117,8 +117,8 @@ public class Grid {
 
 //				System.out.print(String.format("%c[%d,%dm",escCode,8,47));//randgen.nextInt(6)+40));
 
-				if(grid[i][j] != null){
-					grid[i][j].drawyoself();
+				if(grid[j][i] != null){
+					grid[j][i].drawyoself();
 				}else{
 					defaultitem.drawyoself();
 				}
