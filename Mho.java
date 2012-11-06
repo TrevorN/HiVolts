@@ -22,27 +22,59 @@ public class Mho extends Item{
 
 			for(int y = 1; y < 11; y++)
 			{
-				if(myGrid.whatsAt(x, y).whoAmI() == 'Y')
+				if(safeWhoAmI(myGrid.whatsAt(x, y)) == 'Y')
 				{
 					keepLooking = false;
 					playerX = x;
 					playerY = y;
 				}
+
+				if(!keepLooking) break;
 			}
 		}
 
+		boolean moved = false;
+
+		//Is a direct move possible?
 		if(playerX == myX)
 		{
 			if(myY < playerY){
-				attemptMove(myX, myY + 1);
+				move(myX, myY + 1);
 			} else {
-				attemptMove(myX, myY - 1);
+				move(myX, myY - 1);
 			}
+
+			moved = true;
+
 		} else if (playerY == myY) {
+	
 			if(myX < playerX){
-				attemptMove(myX + 1, myY);
+				move(myX + 1, myY);
 			} else {
-				attemptMove(myX - 1, myY);
+				move(myX - 1, myY);
+			}
+
+			moved = true;
+		}
+
+		//Check if Diagonal is safe.
+		if(!moved)
+		{
+			if(playerX > myX)
+			{
+				if(playerY > myY)
+				{
+					moved = attemptMove(int x + 1, int  y + 1);
+				} else {
+					moved = attemptMove(int x + 1, int y - 1);
+				}
+			} else {
+				if(playerY > myY)
+				{
+					moved = attemptMove(int x - 1, int  y + 1);
+				} else {
+					moved = attemptMove(int x - 1, int y - 1);
+				}
 			}
 		}
 	}
@@ -52,7 +84,28 @@ public class Mho extends Item{
 		return alive;
 	}
 
-	private void attemptMove(int x, int y)
+	public boolean attemptMove(int x, int y)
+	{
+		if(safeWhoAmI(myGrid.whatsAt(x, y)) != 'F' && safeWhoAmI(myGrid.whatsAt(x, y))
+		{
+			move(x, y);
+			return true;
+		}
+
+		return false;
+	}
+
+	public char safeWhoAmI(Item i)
+	{
+		if(i == null)
+		{
+			return 'E';
+		} else {
+			i.whoAmI();
+		}
+	}
+
+	private void move(int x, int y)
 	{
 		if(myGrid.whatsAt(x, y).whoAmI() == 'F')
 		{
