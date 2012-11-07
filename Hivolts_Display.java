@@ -1,4 +1,5 @@
 import java.io.*;
+import java.util.Random;
 public class Hivolts_Display {
 
 
@@ -75,10 +76,15 @@ public class Hivolts_Display {
 //							System.out.println("SE");
 							hivoltsgrid.translateItem(x,y,x+1,y+1);
 							break;
+						case 'j':
+							int jumpval = jump(hivoltsgrid);
+							hivoltsgrid.translateItem(x,y,jumpval/11,jumpval%11);
+							break;
 					}
 //					System.in.skip(System.in.available());
 					
-					hivoltsgrid.invokeMhos();
+//					if(input[0]!='j')
+//					hivoltsgrid.invokeMhos();
 
 					hivoltsgrid.drawAll();
 
@@ -87,5 +93,32 @@ public class Hivolts_Display {
 				System.out.println("error");
 			}
 		}
+	}
+
+	static int jump(Grid hg){
+		
+		Random randjump = new Random();
+		boolean valid = false;
+		int x = 0;
+		int y = 0;
+		while(!valid){
+			x = randjump.nextInt(10)+1;
+			y = randjump.nextInt(10)+1;
+			if(hg.whatsAt(x,y) == null || hg.whatsAt(x,y).whoAmI() != 'F'){
+				valid = true;
+			}
+
+		}
+		return 11*x+y;
+	}
+	static boolean willDie(Grid hg, int x, int y){
+		
+		boolean dead = false;
+
+		if(hg.whatsAt(x,y).whoAmI() == 'F' || hg.whatsAt(x,y).whoAmI() == 'M'){
+			dead = true;
+		}
+
+		return dead;
 	}
 }
