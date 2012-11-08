@@ -138,10 +138,10 @@ public class Hivolts_Display {
 							}
 						}
 					}
-					if(x==-1&&y==-1){
+					if(x!=-1&&y!=-1){
 						hivoltsgrid.drawAll();
 					}else{
-//						die();
+						die();
 					}
 
 				}
@@ -180,6 +180,18 @@ public class Hivolts_Display {
 	}
 
 	protected static void die(){
-		
+		Random randcolo = new Random();
+		int escCode =0x1B;
+		while(true){	
+
+			
+			System.out.print(String.format("%c[%dA", escCode, randcolo.nextInt(6)));
+			System.out.print(String.format("%c[%dB", escCode, randcolo.nextInt(6)));
+			System.out.print(String.format("%c[%dC", escCode, randcolo.nextInt(6)));
+			System.out.print(String.format("%c[%dD", escCode, randcolo.nextInt(6)));
+			System.out.print(String.format("%c[%dm", escCode, randcolo.nextInt(6)+40));
+			System.out.print(String.format("%c[%dD", escCode, 1));//compensate for space`
+			System.out.print(" ");
+		}
 	}
 }
