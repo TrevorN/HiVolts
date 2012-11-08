@@ -97,8 +97,8 @@ public class Grid {
 	{
 
 		grid[newX][newY] = grid[x][y];
-		grid[x][y] = null;
-		grid[newX][newY].newLoc(x, y);
+//		grid[x][y] = null;
+		grid[newX][newY].newLoc(newX, newY);
 
 	}
 

@@ -136,14 +136,14 @@ public class Mho extends Item{
 
 	private void move(int x, int y)
 	{
-		if(myGrid.whatsAt(x, y).whoAmI() == 'F')
+		if(safeWhoAmI(myGrid.whatsAt(x, y)) == 'F')
 		{
 			alive = false;
 			myGrid.removeItem(myX, myY);	
-		} else if(myGrid.whatsAt(x, y).whoAmI() == 'Y') {
+		} else if(safeWhoAmI(myGrid.whatsAt(x, y)) == 'Y') {
 			System.exit(0);
 		} else {
-			myGrid.translateItem(myX, myY, x ,y);
+			myGrid.translateItem(myX, myY, x, y);
 		} 
 	}
 
