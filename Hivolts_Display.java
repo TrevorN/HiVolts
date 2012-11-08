@@ -43,42 +43,79 @@ public class Hivolts_Display {
 					switch(input[0]){
 						case 'q':
 //							System.out.println("NW");
-							hivoltsgrid.translateItem(x,y,x-1,y-1);
+							if(!willDie(hivoltsgrid,x-1,y-1)){
+								hivoltsgrid.translateItem(x,y,x-1,y-1);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 'w':
 //							System.out.println("N");
-							hivoltsgrid.translateItem(x,y,x,y-1);
+							if(!willDie(hivoltsgrid,x,y-1)){
+								hivoltsgrid.translateItem(x,y,x,y-1);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 'e':
 //							System.out.println("NE");
-							hivoltsgrid.translateItem(x,y,x+1,y-1);
+							if(!willDie(hivoltsgrid,x+1,y-1)){
+								hivoltsgrid.translateItem(x,y,x+1,y-1);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 'a':
 //							System.out.println("W");
-							hivoltsgrid.translateItem(x,y,x-1,y);
+							if(!willDie(hivoltsgrid,x-1,y)){
+								hivoltsgrid.translateItem(x,y,x-1,y);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 's':
 //							System.out.println("nop");
 							break;
 						case 'd':
 //							System.out.println("E");
-							hivoltsgrid.translateItem(x,y,x+1,y);
+							if(!willDie(hivoltsgrid,x+1,y)){
+								hivoltsgrid.translateItem(x,y,x+1,y);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 'z':
 //							System.out.println("SW");
-							hivoltsgrid.translateItem(x,y,x-1,y+1);
+							if(!willDie(hivoltsgrid,x-1,y+1)){
+								hivoltsgrid.translateItem(x,y,x-1,y+1);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 'x':
 //							System.out.println("S");
-							hivoltsgrid.translateItem(x,y,x,y+1);
+							if(!willDie(hivoltsgrid,x,y+1)){
+								hivoltsgrid.translateItem(x,y,x,y+1);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 'c':
 //							System.out.println("SE");
-							hivoltsgrid.translateItem(x,y,x+1,y+1);
+							if(!willDie(hivoltsgrid,x+1,y+1)){
+								hivoltsgrid.translateItem(x,y,x+1,y+1);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 						case 'j':
 							int jumpval = jump(hivoltsgrid);
 							hivoltsgrid.translateItem(x,y,jumpval/11,jumpval%11);
+							if(!willDie(hivoltsgrid,jumpval/11,jumpval%11)){
+								hivoltsgrid.translateItem(x,y,jumpval/11,jumpval%11);
+							}else{
+								hivoltsgrid.removeItem(x,y);
+							}
 							break;
 					}
 //					System.in.skip(System.in.available());
@@ -114,9 +151,10 @@ public class Hivolts_Display {
 	static boolean willDie(Grid hg, int x, int y){
 		
 		boolean dead = false;
-
-		if(hg.whatsAt(x,y).whoAmI() == 'F' || hg.whatsAt(x,y).whoAmI() == 'M'){
-			dead = true;
+		if(hg.whatsAt(x,y) != null){
+			if(hg.whatsAt(x,y).whoAmI() == 'F' || hg.whatsAt(x,y).whoAmI() == 'M'){
+				dead = true;
+			}
 		}
 
 		return dead;
