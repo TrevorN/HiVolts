@@ -11,8 +11,8 @@ public class Hivolts_Display {
 	
 	private static void showGUI(){
 
-		int x=0;
-		int y=0;
+		int x=-1;
+		int y=-1;
 		Grid hivoltsgrid = new Grid(12);
 
 		hivoltsgrid.drawAll();
@@ -120,10 +120,29 @@ public class Hivolts_Display {
 					}
 //					System.in.skip(System.in.available());
 					
-//					if(input[0]!='j')
-//					hivoltsgrid.invokeMhos();
+					if(input[0]!='j')
+					hivoltsgrid.invokeMhos();
 
-					hivoltsgrid.drawAll();
+					x=-1;
+					y=-1;
+
+					for(int i = 1; i < 11; i++){
+
+						for(int j =1; j<11; j++){
+
+							if(hivoltsgrid.whatsAt(i,j)!= null && hivoltsgrid.whatsAt(i,j).whoAmI()=='Y'){
+								
+								x=i;
+								y=j;
+
+							}
+						}
+					}
+					if(x==-1&&y==-1){
+						hivoltsgrid.drawAll();
+					}else{
+//						die();
+					}
 
 				}
 			}catch(IOException e){
@@ -158,5 +177,9 @@ public class Hivolts_Display {
 		}
 
 		return dead;
+	}
+
+	protected static void die(){
+		
 	}
 }
