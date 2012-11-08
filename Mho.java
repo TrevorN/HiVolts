@@ -39,9 +39,9 @@ public class Mho extends Item{
 		if(playerX == myX)
 		{
 			if(myY < playerY){
-				move(myX, myY + 1);
+				attemptMove(myX, myY + 1, false);
 			} else {
-				move(myX, myY - 1);
+				attemptMove(myX, myY - 1, false);
 			}
 
 			moved = true;
@@ -49,34 +49,63 @@ public class Mho extends Item{
 		} else if (playerY == myY) {
 	
 			if(myX < playerX){
-				move(myX + 1, myY);
+				attemptMove(myX + 1, myY, false);
 			} else {
-				move(myX - 1, myY);
+				attemptMove(myX - 1, myY, false);
 			}
 
 			moved = true;
 		}
 
+		boolean checkFences = true;
+
 		//Check if Diagonal is safe.
-		if(!moved)
+		for(int i = 0; i < 2; i++)
 		{
-			if(playerX > myX)
+			if(!moved)
 			{
-				if(playerY > myY)
+				if(playerX > myX)
 				{
-					moved = attemptMove(int x + 1, int  y + 1);
+					if(playerY > myY)
+					{
+						moved = attemptMove(myX + 1, myY + 1, checkFences);
+					} else {
+						moved = attemptMove(myX + 1, myY - 1, checkFences);
+					}
 				} else {
-					moved = attemptMove(int x + 1, int y - 1);
-				}
-			} else {
-				if(playerY > myY)
-				{
-					moved = attemptMove(int x - 1, int  y + 1);
-				} else {
-					moved = attemptMove(int x - 1, int y - 1);
+					if(playerY > myY)
+					{
+						moved = attemptMove(myX - 1, myY + 1, checkFences);
+					} else {
+						moved = attemptMove(myX - 1, myY - 1, checkFences);
+					}
 				}
 			}
+
+			//Now try horizontal
+			if(!moved)
+			{
+				if(Math.abs(myX - playerX) >= Math.abs(myY - playerY))
+				{
+					if(myX > playerX)
+					{
+						moved = attemptMove(myX - 1, myY, checkFences);
+					} else {
+						moved = attemptMove(myX + 1, myY, checkFences);
+					}
+				} else {
+					if(myY > playerY)
+					{
+						moved = attemptMove(myX, myY - 1, checkFences);
+					} else {
+						moved = attemptMove(myX, myY + 1, checkFences);
+					}
+				}
+			}
+
+			checkFences = false;
 		}
+
 	}
 
 	public boolean alive()
@@ -84,9 +113,9 @@ public class Mho extends Item{
 		return alive;
 	}
 
-	public boolean attemptMove(int x, int y)
+	public boolean attemptMove(int x, int y, boolean checkFences)
 	{
-		if(safeWhoAmI(myGrid.whatsAt(x, y)) != 'F' && safeWhoAmI(myGrid.whatsAt(x, y))
+		if((safeWhoAmI(myGrid.whatsAt(x, y)) != 'F' || !checkFences) && safeWhoAmI(myGrid.whatsAt(x, y)) != 'M')
 		{
 			move(x, y);
 			return true;
@@ -101,7 +130,7 @@ public class Mho extends Item{
 		{
 			return 'E';
 		} else {
-			i.whoAmI();
+			return i.whoAmI();
 		}
 	}
 
