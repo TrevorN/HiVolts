@@ -20,6 +20,19 @@ public class Hivolts_Display {
 
 		
 		byte[] input = new byte[2];
+		for(int i = 1; i < 11; i++){
+
+			for(int j =1; j<11; j++){
+
+				if(hivoltsgrid.whatsAt(i,j)!= null && hivoltsgrid.whatsAt(i,j).whoAmI()=='Y'){
+					
+					x=i;
+					y=j;
+
+				}
+			}
+		}
+
 		while(true){
 			try{
 				System.in.available();
@@ -28,18 +41,6 @@ public class Hivolts_Display {
 
 				if(input[0]!=0){
 
-					for(int i = 1; i < 11; i++){
-
-						for(int j =1; j<11; j++){
-
-							if(hivoltsgrid.whatsAt(i,j)!= null && hivoltsgrid.whatsAt(i,j).whoAmI()=='Y'){
-								
-								x=i;
-								y=j;
-
-							}
-						}
-					}
 
 					switch(input[0]){
 						case 'q':
@@ -122,7 +123,7 @@ public class Hivolts_Display {
 //					System.in.skip(System.in.available());
 					
 					if(input[0]!='j')
-//					hivoltsgrid.invokeMhos();
+					hivoltsgrid.invokeMhos();
 
 					x=-1;
 					y=-1;
