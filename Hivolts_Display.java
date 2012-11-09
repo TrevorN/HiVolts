@@ -122,7 +122,7 @@ public class Hivolts_Display {
 //					System.in.skip(System.in.available());
 					
 					if(input[0]!='j')
-					hivoltsgrid.invokeMhos();
+//					hivoltsgrid.invokeMhos();
 
 					x=-1;
 					y=-1;
@@ -144,23 +144,23 @@ public class Hivolts_Display {
 					}else{
 						die();
 					}
-					win = true;
-					for(int i = 1; i < 11; i++){
+				win = true;
+				for(int i = 1; i < 11; i++){
 
-						for(int j =1; j<11; j++){
+					for(int j =1; j<11; j++){
 
-							if(hivoltsgrid.whatsAt(i,j)!= null && hivoltsgrid.whatsAt(i,j).whoAmI()=='M'){
-								
-								win = false;
+						if(hivoltsgrid.whatsAt(i,j)!= null && hivoltsgrid.whatsAt(i,j).whoAmI()=='M'){
+							
+							win = false;
 
-							}
 						}
 					}
-					if(win==true){
-						win();
-					}
-
 				}
+				if(win==true){
+					win();
+				}
+
+				}			
 			}catch(IOException e){
 				System.out.println("error");
 			}
@@ -201,12 +201,12 @@ public class Hivolts_Display {
 		while(true){	
 
 			
-			System.out.print(String.format("%c[%da", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%db", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dc", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dd", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dA", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dB", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dC", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dD", esccode, randcolo.nextInt(8)));
 			System.out.print(String.format("%c[%dm", esccode, randcolo.nextInt(6)+40));
-			System.out.print(String.format("%c[%dd", esccode, 1));//compensate for space`
+			System.out.print(String.format("%c[%dD", esccode, 1));//compensate for space`
 			System.out.print(" ");
 		}
 	}
@@ -217,12 +217,12 @@ public class Hivolts_Display {
 		while(true){	
 
 			
-			System.out.print(String.format("%c[%da", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%db", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dc", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dd", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dA", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dB", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dC", esccode, randcolo.nextInt(8)));
+			System.out.print(String.format("%c[%dD", esccode, randcolo.nextInt(8)));
 			System.out.print(String.format("%c[%dm", esccode, randcolo.nextInt(6)+40));
-			System.out.print(String.format("%c[%dd", esccode, 3));//compensate for space`
+			System.out.print(String.format("%c[%dD", esccode, 3));//compensate for space`
 			System.out.print("WIN");
 		}
 	}
