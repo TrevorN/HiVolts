@@ -116,7 +116,7 @@ public class Hivolts_Display {
 //					System.in.skip(System.in.available());
 					
 					if(input[0]!='j')
-//					hivoltsgrid.invokeMhos();
+					hivoltsgrid.invokeMhos();
 
 					x=-1;
 					y=-1;
