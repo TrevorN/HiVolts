@@ -138,7 +138,7 @@ public class Hivolts_Display {
 					}else{
 						die();
 					}
-				if(hivoltsgrid.noMo()==true){
+				if(hivoltsgrid.noMho()==true){
 					win();
 				}
 
