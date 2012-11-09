@@ -11,7 +11,6 @@ public class Hivolts_Display {
 	
 	private static void showGUI(){
 
-		boolean win = false;
 		int x=-1;
 		int y=-1;
 		Grid hivoltsgrid = new Grid(12);
@@ -123,7 +122,7 @@ public class Hivolts_Display {
 //					System.in.skip(System.in.available());
 					
 					if(input[0]!='j')
-					hivoltsgrid.invokeMhos();
+//					hivoltsgrid.invokeMhos();
 
 					x=-1;
 					y=-1;
@@ -145,19 +144,7 @@ public class Hivolts_Display {
 					}else{
 						die();
 					}
-				win = true;
-				for(int i = 1; i < 11; i++){
-
-					for(int j =1; j<11; j++){
-
-						if(hivoltsgrid.whatsAt(i,j)!= null && hivoltsgrid.whatsAt(i,j).whoAmI()=='M'){
-							
-							win = false;
-
-						}
-					}
-				}
-				if(win==true){
+				if(hivoltsgrid.noMo()==true){
 					win();
 				}
 
@@ -218,13 +205,9 @@ public class Hivolts_Display {
 		while(true){	
 
 			
-			System.out.print(String.format("%c[%dA", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dB", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dC", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dD", esccode, randcolo.nextInt(8)));
-			System.out.print(String.format("%c[%dm", esccode, randcolo.nextInt(6)+40));
-			System.out.print(String.format("%c[%dD", esccode, 3));//compensate for space`
 			System.out.print("WIN");
 		}
 	}
+
+
 }
