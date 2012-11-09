@@ -87,6 +87,16 @@ public class Grid {
 		}
 	}
 
+	public boolean noMho(){
+		for(Mho m : mhos)
+		{
+			if(m.alive())
+			return false;
+		}
+
+		return true;
+	}
+
 	public Item whatsAt(int x, int y){
 
 		return grid[x][y];
@@ -97,7 +107,7 @@ public class Grid {
 	{
 
 		grid[newX][newY] = grid[x][y];
-//		grid[x][y] = null;
+		grid[x][y] = null;
 		grid[newX][newY].newLoc(newX, newY);
 
 	}

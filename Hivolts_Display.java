@@ -109,13 +109,7 @@ public class Hivolts_Display {
 							}
 							break;
 						case 'j':
-							int jumpval = jump(hivoltsgrid);
-							hivoltsgrid.translateItem(x,y,jumpval/11,jumpval%11);
-							if(!willDie(hivoltsgrid,jumpval/11,jumpval%11)){
-								hivoltsgrid.translateItem(x,y,jumpval/11,jumpval%11);
-							}else{
-								hivoltsgrid.removeItem(x,y);
-							}
+							jump(hivoltsgrid, x, y);
 							break;
 					}
 //					System.in.skip(System.in.available());
@@ -151,32 +145,40 @@ public class Hivolts_Display {
 		}
 	}
 
-	static int jump(Grid hg){
+	static void jump(Grid hg, int myX, int myY){
 		
 		Random randjump = new Random();
 		boolean valid = false;
-		int x = 0;
-		int y = 0;
+		int newX = 0;
+		int newY = 0;
 		while(!valid){
-			x = randjump.nextInt(10)+1;
-			y = randjump.nextInt(10)+1;
-			if(hg.whatsAt(x,y) == null || hg.whatsAt(x,y).whoAmI() != 'F'){
+			newX = randjump.nextInt(10)+1;
+			newY = randjump.nextInt(10)+1;
+			if(hg.whatsAt(newX, newY) == null || hg.whatsAt(newX, newY).whoAmI() != 'Y' || hg.whatsAt(newX, newY).whoAmI() != 'F')
+			{
 				valid = true;
 			}
 
 		}
-		return 11*x+y;
+
+		if(!willDie(hg, newX, newY))
+		{
+			hg.translateItem(myX, myY, newX, newY);
+		} else {
+			hg.removeItem(myX, myY);
+			die();
+		}
 	}
+
 	static boolean willDie(Grid hg, int x, int y){
 		
-		boolean dead = false;
 		if(hg.whatsAt(x,y) != null){
 			if(hg.whatsAt(x,y).whoAmI() == 'F' || hg.whatsAt(x,y).whoAmI() == 'M'){
-				dead = true;
+				return true;
 			}
 		}
 
-		return dead;
+		return false;
 	}
 
 	protected static void die(){

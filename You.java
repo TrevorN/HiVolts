@@ -12,8 +12,4 @@ public class You extends Item{
 		direction = r;
 	}
 
-	public void act(){
-
-	}
-
 }

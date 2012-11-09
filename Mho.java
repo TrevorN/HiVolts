@@ -140,8 +140,6 @@ public class Mho extends Item{
 		{
 			alive = false;
 			myGrid.removeItem(myX, myY);	
-		} else if(safeWhoAmI(myGrid.whatsAt(x, y)) == 'Y') {
-			System.exit(0);
 		} else {
 			myGrid.translateItem(myX, myY, x, y);
 		} 
